@@ -9,7 +9,7 @@
 }
 
 body{
-    background-color: rgb(250, 244, 235);
+    background-color: rgb(255, 243, 243);
     margin: 0;
 }
 header{
@@ -17,7 +17,7 @@ header{
     width: 100%;
     align-items: center;
     justify-content: center;
-    gap: 15rem;
+    gap: 20rem;
     
 }
 
