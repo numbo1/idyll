@@ -3,15 +3,27 @@
 }
 .search{
     width: 3rem;
+    transition: transform 0.2s ease;
 }
+.search:hover{
+    transform: scale(1.05);
+
+}
+
 .cart{
     width: 3rem;
+    transition: transform 0.2s ease;
+}
+.cart:hover{
+    transform: scale(1.05);
+
 }
 
 body{
     font-family: Arial, Helvetica, sans-serif;
     background-color: rgb(219, 211, 211);
     margin: 0;
+    text-align: center;
 }
 header{
     display: flex;
@@ -39,15 +51,20 @@ header{
 
 .time_order{
     background-color: rgb(122, 162, 145);
-    color: white;
     border-radius: 0.5rem;
     text-align: center;
-    margin-left: 45%;
-    margin-right: 45%;
+    width: 4rem;
     padding: 0.5rem;
-    transition: transform 0.2s ease;
+    text-decoration: none;
+    color: white;
 }
 
-.time_order:hover{
+.time_order_box{
+    transition: transform 0.2s ease;
+    padding: 0;
+    margin: 2rem;
+}
+
+.time_order_box:hover{
     transform: scale(1.05);
 }
