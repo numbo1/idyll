@@ -38,15 +38,16 @@ header{
 }
 
 .time_order{
-    background-color: rgb(12, 92, 92);
+    background-color: rgb(122, 162, 145);
     color: white;
-    
+    border-radius: 0.5rem;
     text-align: center;
     margin-left: 45%;
     margin-right: 45%;
     padding: 0.5rem;
+    transition: transform 0.2s ease;
 }
 
 .time_order:hover{
-    
+    transform: scale(1.05);
 }
