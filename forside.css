@@ -42,6 +42,7 @@ header{
 
 .nav{
     color: black;
+    font-weight: 50;
     text-decoration: none;
 }
 
@@ -50,7 +51,7 @@ header{
 }
 
 .time_order{
-    background-color: rgb(122, 162, 145);
+    background-color: rgb(92, 126, 112);
     border-radius: 0.5rem;
     text-align: center;
     width: 4rem;
@@ -67,4 +68,9 @@ header{
 
 .time_order_box:hover{
     transform: scale(1.05);
+}
+
+.welcome{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 500;
 }
