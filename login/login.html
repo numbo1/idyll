@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="nettbutikk.css">
-    <title>Nettbutikk</title>
+    <link rel="stylesheet" href="login.css">
+    <title>Logg inn</title>
 </head>
 <body>
     <header>
@@ -18,17 +18,23 @@
             <a href="#"><img src="/bilder/cart.png" alt="cart" class="cart"></a>
         </div>
     </header>
-    <div class="navigation"></div>
+    <div class="navigation">
         <a href="/index.html" class="nav">Forside</a>
         <a href="#" class="nav">Bestille time</a>
-        <a href="nettbutikk.html" class="nav">Nettbutikk</a>
+        <a href="/nettbutikk/nettbutikk.html" class="nav">Nettbutikk</a>
         <a href="#" class="nav">Prisliste</a>
         <a href="#" class="nav">Galleri</a>
         <a href="#" class="nav">Kontakt</a>
-        <a href="/login/login.html" class="nav">Logg inn</a>
+        <a href="#" class="nav">Logg inn</a>
     </div>
     <main>
-
+        <div class="login-container"></div>
+            <form id="loginForm">
+                <input type="text" id="username" name="username" placeholder="brukernavn" required>
+                <input type="password" id="password" name="password" placeholder="passord" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
     </main>
 </body>
 </html>

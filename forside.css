@@ -1,3 +1,12 @@
+/*All*/
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(219, 211, 211);
+    margin: 0;
+    text-align: center;
+}
+
+/*Header*/
 .logo{
     width: 10rem;
 }
@@ -19,12 +28,6 @@
 
 }
 
-body{
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: rgb(219, 211, 211);
-    margin: 0;
-    text-align: center;
-}
 header{
     display: flex;
     width: 100%;
@@ -51,6 +54,7 @@ header{
     text-decoration: underline;
 }
 
+/*Button to order an appointment*/
 .time_order{
     background-color: rgb(92, 126, 112);
     border-radius: 0.5rem;
@@ -71,6 +75,7 @@ header{
     transform: scale(1.05);
 }
 
+/*Welcome text and list of services*/
 .welcome{
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: 500;
