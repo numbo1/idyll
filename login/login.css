@@ -9,21 +9,14 @@ body{
 /*Header*/
 .logo{
     width: 10rem;
+    display: block;
+    margin: 0 auto;
 }
-.search{
+.back{
     width: 3rem;
     transition: transform 0.2s ease;
 }
-.search:hover{
-    transform: scale(1.05);
-
-}
-
-.cart{
-    width: 3rem;
-    transition: transform 0.2s ease;
-}
-.cart:hover{
+.back:hover{
     transform: scale(1.05);
 
 }
@@ -33,49 +26,53 @@ header{
     width: 100%;
     align-items: center;
     justify-content: center;
-    gap: 20rem;
+    position: relative;
+    height: 10rem;
     
 }
 
-.navigation{
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    padding: 1rem;
+#back_button {
+    cursor: pointer;
+    position: absolute;
+    padding: 0.5rem 1rem;
+    left: 1rem;
+    top: 1.5rem;
 }
 
-.nav{
-    color: rgb(48, 48, 48);
-    font-weight: 50;
-    text-decoration: none;
-}
 
-.nav:hover{
-    text-decoration: underline;
+/*Text*/
+#loginText{
+    font-weight: 500;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
 }
 
 /*Main login*/
 .login-container {
     max-width: 300px;
-    margin: 0 auto;
+    margin: 5% 0;
+    align-self: center;
   }
-  .login-container input {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
+  .input {
+    width: 15%;
+    padding: 0.5rem;
+    margin: 0.2rem;
     box-sizing: border-box;
-  }
-  .login-container button {
-    width: 100%;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
+    border-radius: 0.5rem;
     border: none;
+  }
+  #loginButton {
+    width: 15%;
+    padding: 0.5rem;
+    margin: 0.2rem;
+    background-color: rgb(92, 126, 112);
+    color: white;
     cursor: pointer;
+    border-radius: 0.5rem;
+    border: none;
   }
-  .login-container button:hover {
-    background-color: #45a049;
-  }
+  #loginButton:hover {
+    background-color: rgb(65, 88, 79);  }
   .message {
     margin-top: 10px;
     color: red;

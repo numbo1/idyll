@@ -9,16 +9,13 @@
 <body>
     <header>
         <div>
-            <a href="#"><img src="/bilder/search.png" alt="search" class="search"></a>
+            <a href="javascript:history.back()" id="back_button"><img src="/bilder/back_button.png" alt="search" class="back"></a>
         </div>
         <div>
             <img src="/bilder/logo.webp" alt="logo" class="logo">
         </div>
-        <div>
-            <a href="#"><img src="/bilder/cart.png" alt="cart" class="cart"></a>
-        </div>
     </header>
-    <div class="navigation">
+    <!-- <div class="navigation">
         <a href="/index.html" class="nav">Forside</a>
         <a href="#" class="nav">Bestille time</a>
         <a href="/nettbutikk/nettbutikk.html" class="nav">Nettbutikk</a>
@@ -26,13 +23,14 @@
         <a href="#" class="nav">Galleri</a>
         <a href="#" class="nav">Kontakt</a>
         <a href="#" class="nav">Logg inn</a>
-    </div>
+    </div> -->
     <main>
+        <h1 id="loginText">Logg inn hos Idyll hudpleie</h1>
         <div class="login-container"></div>
             <form id="loginForm">
-                <input type="text" id="username" name="username" placeholder="brukernavn" required>
-                <input type="password" id="password" name="password" placeholder="passord" required>
-                <button type="submit">Login</button>
+                <input type="text" id="username" class="input" name="username" placeholder="brukernavn" required> <br>
+                <input type="password" id="password" class="input" name="password" placeholder="passord" required> <br>
+                <button type="submit" id="loginButton">Login</button>
             </form>
         </div>
     </main>

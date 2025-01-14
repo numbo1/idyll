@@ -66,13 +66,12 @@ header{
 }
 
 .time_order_box{
-    transition: transform 0.2s ease;
     padding: 0;
     margin: 2rem;
 }
 
-.time_order_box:hover{
-    transform: scale(1.05);
+.time_order:hover{
+    background-color: rgb(65, 88, 79);
 }
 
 /*Welcome text and list of services*/
