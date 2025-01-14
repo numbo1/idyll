@@ -12,6 +12,9 @@ const admins = [
 let loggedIn = false;
 let isAdmin = false;
 
+localStorage.setItem("loggedIn", "false");
+localStorage.setItem("isAdmin", "false");
+
 
 //Login validation function
 function validateLogin(username, password) {
