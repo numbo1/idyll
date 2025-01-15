@@ -1,7 +1,7 @@
 /*All*/
 body{
     font-family: Arial, Helvetica, sans-serif;
-    background-color: rgb(219, 211, 211);
+    background-color: #DBD3D3;
     margin: 0;
     text-align: center;
 }
@@ -44,7 +44,7 @@ header{
 }
 
 .nav{
-    color: rgb(48, 48, 48);
+    color: #303030;
     font-weight: 50;
     text-decoration: none;
 }
@@ -55,7 +55,7 @@ header{
 
 /*Button to order an appointment*/
 .time_order{
-    background-color: rgb(92, 126, 112);
+    background-color: #5C7E70;
     border-radius: 0.5rem;
     text-align: center;
     width: 4rem;
@@ -70,7 +70,7 @@ header{
 }
 
 .time_order:hover{
-    background-color: rgb(65, 88, 79);
+    background-color: #41584F;
 }
 
 /*Welcome text and list of services*/
@@ -82,7 +82,7 @@ header{
 #introduction {
     margin-left: 30%;
     margin-right: 30%;
-    color: rgb(73, 73, 73);
+    color: #494949;
 }
 
 .container_list {
@@ -92,7 +92,7 @@ header{
 .service_ul {
     display: inline-block;
     text-align: left;
-    color: rgb(73, 73, 73);
+    color: #494949;
 }
 
 li{
@@ -101,5 +101,5 @@ li{
 
 .introduction1{
     font-weight: bold;
-    color: rgb(73, 73, 73);
+    color: #494949;
 }

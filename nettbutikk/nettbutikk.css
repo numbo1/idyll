@@ -1,3 +1,12 @@
+/*All*/
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(219, 211, 211);
+    margin: 0;
+    text-align: center;
+}
+
+/*Header and navigation*/
 .logo{
     width: 10rem;
 }
@@ -19,12 +28,6 @@
 
 }
 
-body{
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: rgb(219, 211, 211);
-    margin: 0;
-    text-align: center;
-}
 header{
     display: flex;
     width: 100%;
@@ -50,4 +53,63 @@ header{
     text-decoration: underline;
 }
 
+/*Flexbox products*/
+.flex_products{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1rem;
+    gap: 1rem;
+}
 
+.product{
+    text-decoration: none;
+    color: #303030;
+    background-color: white;
+    text-align: center;
+    width: 15rem;
+}
+
+.product_img{
+    width: 13.5rem;
+    margin: 0.5rem;
+    border-style: solid;
+    border-width: 0.1rem;
+    border-color: #303030;
+}
+
+.brand{
+    font-size: large;
+    font-weight: bold;
+}
+
+.product_name{
+    font-size: medium;
+    margin: 0 0.5rem;
+}
+
+.flex_price_cart{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5rem 1.5rem;
+}
+
+.price{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.cart_img{
+    width: 3rem;
+    background-color: white;
+    border-radius: 3rem;
+    border-color: #303030;
+}
+
+.cart_btn{
+    border-radius: 3rem;
+    background-color: white;
+    border-color: #303030;
+    box-shadow: none;
+}
