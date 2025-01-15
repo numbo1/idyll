@@ -12,14 +12,14 @@ body{
     display: block;
     margin: 0 auto;
 }
-.back{
+/* .back{
     width: 3rem;
     transition: transform 0.2s ease;
 }
 .back:hover{
     transform: scale(1.05);
 
-}
+} */
 
 header{
     display: flex;
@@ -37,6 +37,14 @@ header{
     padding: 0.5rem 1rem;
     left: 1rem;
     top: 1.5rem;
+    font-size: 3rem;
+    text-decoration: none;
+    color: #303030;
+    transition: transform 0.2s ease;
+}
+.back_button:hover{
+  transform: scale(1.05);
+
 }
 
 
