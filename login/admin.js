@@ -9,6 +9,7 @@ const admins = [
     {username: "ellen", password: "password"}
 ];
 
+let userProfile = document.getElementById("username").value;
 let loggedIn = false;
 let isAdmin = false;
 
@@ -20,6 +21,7 @@ localStorage.setItem("isAdmin", "false");
 function validateLogin(username, password) {
     const user = users.find((u) => u.username === username);
     if (user && user.password === password) {
+        
         return "Du er nå logget inn"; // User is logged in
     }
 
