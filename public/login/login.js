@@ -5,17 +5,20 @@ import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+    apiKey: "AIzaSyDDbWAlPBNh4vnIRMzGq1hHDJSOB48H83A",
+    authDomain: "idyll-f6405.firebaseapp.com",
+    databaseURL: "https://idyll-f6405-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "idyll-f6405",
+    storageBucket: "idyll-f6405.firebasestorage.app",
+    messagingSenderId: "820088340754",
+    appId: "1:820088340754:web:525f3f5fa2af8c50cf33cb",
+    measurementId: "G-EPNK7242P4"
 };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getDatabase(app);
+const analytics = getAnalytics(app);
 const firestore = getFirestore(app);
 const storage = getStorage(app);
 
