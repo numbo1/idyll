@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="login_header.css">
+    <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+    <header>
+        <div>
+            <a href="javascript:history.back()" id="back_button">&larr;<!-- <img src="/bilder/back_button.png" alt="search" class="back"> --></a>
+        </div>
+        <div>
+            <img src="/public/bilder/logo.webp" alt="logo" class="logo">
+        </div>
+    </header>
+    <main>
+        <h1 id="loginText">Registrer deg hos Idyll hudpleie</h1>
+        <div class="login-container"></div>
+            <form id="signupForm">
+                <input type="text" id="username" class="input" name="username" placeholder="e-post" required> <br>
+                <input type="password" id="password" class="input" name="password" placeholder="passord" required> <br>
+                <input type="password" id="password2" class="input" name="password2" placeholder="bekreft passord" required> <br>
+                <button type="submit" id="signupButton">Registrer deg</button> <br>
+                <a href="login.html" class="links">Har du allerede bruker? Logg inn her.</a>
+            </form>
+            <div class="message" id="message"></div>
+        </div>
+    <script type="module" src="signup.js"></script>
+</body>
+</html>

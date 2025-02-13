@@ -1,4 +1,3 @@
-
 /*Main login*/
 .login-container {
     max-width: 300px;
@@ -13,7 +12,7 @@
     border-radius: 0.5rem;
     border: none;
   }
-  #loginButton {
+  #signupButton {
     width: 17rem;
     padding: 0.5rem;
     margin: 0.2rem;
@@ -23,7 +22,7 @@
     border-radius: 0.5rem;
     border: none;
   }
-  #loginButton:hover {
+  #signupButton:hover {
     background-color: rgb(65, 88, 79);  }
   .message {
     margin-top: 10px;

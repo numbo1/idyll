@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="login_header.css">
     <title>Logg inn</title>
 </head>
 <body>
@@ -12,7 +13,7 @@
             <a href="javascript:history.back()" id="back_button">&larr;<!-- <img src="/bilder/back_button.png" alt="search" class="back"> --></a>
         </div>
         <div>
-            <img src="/bilder/logo.webp" alt="logo" class="logo">
+            <img src="/public/bilder/logo.webp" alt="logo" class="logo">
         </div>
     </header>
     <!-- <div class="navigation">
@@ -28,15 +29,15 @@
         <h1 id="loginText">Logg inn hos Idyll hudpleie</h1>
         <div class="login-container"></div>
             <form id="loginForm">
-                <input type="text" id="username" class="input" name="username" placeholder="brukernavn" required> <br>
+                <input type="text" id="username" class="input" name="username" placeholder="e-post" required> <br>
                 <input type="password" id="password" class="input" name="password" placeholder="passord" required> <br>
-                <button type="submit" id="loginButton">Logg inn</button>
+                <button type="submit" id="loginButton">Logg inn</button> <br>
+                <a href="signup.html" class="links">Har du ikke bruker? Registrer deg her.</a>
             </form>
             <div class="message" id="message"></div>
         </div>
     </main>
 
-    <script src="admin.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>

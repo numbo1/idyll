@@ -1,0 +1,57 @@
+/*All*/
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(219, 211, 211);
+    margin: 0;
+    text-align: center;
+}
+
+/*Header*/
+.logo{
+    width: 10rem;
+    display: block;
+    margin: 0 auto;
+}
+/* .back{
+    width: 3rem;
+    transition: transform 0.2s ease;
+}
+.back:hover{
+    transform: scale(1.05);
+
+} */
+
+header{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 10rem;
+    
+}
+
+#back_button {
+    cursor: pointer;
+    position: absolute;
+    padding: 0.5rem 1rem;
+    left: 1rem;
+    top: 1.5rem;
+    font-size: 3rem;
+    text-decoration: none;
+    color: #303030;
+    transition: transform 0.2s ease;
+}
+.back_button:hover{
+  transform: scale(1.05);
+
+}
+
+
+/*Text*/
+#loginText{
+    font-weight: 500;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #303030;
+
+}
