@@ -27,17 +27,22 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
 
   const email = document.getElementById("username").value;
   const password = document.getElementById("password").value;
+  const messageElement = document.getElementById("message");
 
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in 
       const user = userCredential.user;
       console.log('User signed in:', user);
-      window.location.href = "/index.html";
+      messageElement.style.color = "green";
+      messageElement.textContent = "Du er nå logget inn";
+      window.location.href = "/public/index.html";
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.error('Error signing in:', errorCode, errorMessage);
+      messageElement.style.color = "red";
+      messageElement.textContent = `Feil: ${error.message}`;
     });
 });

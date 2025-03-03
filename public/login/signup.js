@@ -51,7 +51,7 @@ const storage = getStorage(app);
     .catch((error) => {
         console.error("Feil ved registrering:", error.message);
         messageElement.style.color = "red";
-        messageElement.textContent = 'Feil: ${error.message}';
+        messageElement.textContent = `Feil: ${error.message}`;
     });
 
     
