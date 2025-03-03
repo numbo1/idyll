@@ -33,3 +33,20 @@
   .links{
     color: #303030;
   }
+
+  #signup{
+    display: inline-block;
+    max-width: 300px;
+    width: 16rem;
+    padding: 0.7rem;
+    margin-top: 4rem;
+    background-color: rgb(92, 126, 112);
+    color: white;
+    border-radius: 0.5rem;
+    border: none;
+    text-decoration: none;
+  }
+
+  #signup:hover{
+    background-color: rgb(65, 88, 79);
+  }

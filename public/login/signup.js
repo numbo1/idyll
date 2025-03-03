@@ -46,6 +46,7 @@ const storage = getStorage(app);
         const user = userCredential.user;
         console.log("Bruker opprettet:", user);
         messageElement.textContent = "Registrering vellykket!";
+        window.location.href = "/public/login/login.html";
         
     })
     .catch((error) => {
