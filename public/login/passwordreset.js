@@ -29,12 +29,12 @@ document.getElementById("pwdresetForm").addEventListener("submit", function (eve
 
     sendPasswordResetEmail(auth, email)
   .then(() => {
+    document.getElementById("pwdresetForm").reset();
     messageElement.style.color = "green";
     messageElement.textContent = "Tilbakestilling av passord sendt!";
   })
   .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
+    document.getElementById("pwdresetForm").reset();
     messageElement.style.color = "red";
     messageElement.textContent = `Feil: ${error.message}`;
   });

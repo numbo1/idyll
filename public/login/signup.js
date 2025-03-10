@@ -50,6 +50,7 @@ const storage = getStorage(app);
         
     })
     .catch((error) => {
+        document.getElementById("pwdresetForm").reset();
         console.error("Feil ved registrering:", error.message);
         messageElement.style.color = "red";
         messageElement.textContent = `Feil: ${error.message}`;

@@ -10,17 +10,17 @@ body{
 .logo{
     width: 10rem;
 }
-.search{
-    width: 3rem;
+.account{
+    width: 4rem;
     transition: transform 0.2s ease;
 }
-.search:hover{
+.account:hover{
     transform: scale(1.05);
 
 }
 
 .cart{
-    width: 3rem;
+    width: 4rem;
     transition: transform 0.2s ease;
 }
 .cart:hover{
