@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+import { getDatabase } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDDbWAlPBNh4vnIRMzGq1hHDJSOB48H83A",
@@ -14,12 +15,14 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app)
+const database = getDatabase(app);
 
 // Handle logout
 document.getElementById("logout-button").addEventListener("click", async () => {
     try {
       await signOut(auth);
       console.log("User signed out successfully");
+      window.location.href = "../index.html";
     } catch (error) {
       console.error("Error signing out:", error);
     }
