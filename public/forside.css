@@ -18,11 +18,8 @@
     background-color: #41584F;
 }
 
-/*Welcome text and list of services*/
-.welcome{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-weight: 500;
-}
+/*list of services*/
+
 
 #introduction {
     margin-left: 30%;

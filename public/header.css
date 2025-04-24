@@ -6,6 +6,11 @@ body{
     text-align: center;
 }
 
+h1{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 500;
+}
+
 /*Header*/
 .logo{
     width: 10rem;

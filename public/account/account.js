@@ -1,7 +1,9 @@
+// Importing Firebase modules
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 import { getDatabase } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
+// Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyDDbWAlPBNh4vnIRMzGq1hHDJSOB48H83A",
     authDomain: "idyll-f6405.firebaseapp.com",
@@ -13,11 +15,12 @@ const firebaseConfig = {
     measurementId: "G-EPNK7242P4"
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app)
 const database = getDatabase(app);
 
-// Handle logout
+// Logout event listener
 document.getElementById("logout-button").addEventListener("click", async () => {
     try {
       await signOut(auth);
