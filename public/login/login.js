@@ -36,7 +36,7 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
       console.log('User signed in:', user);
       messageElement.style.color = "green";
       messageElement.textContent = "Du er nå logget inn";
-      window.location.href = "/public/index.html";
+      window.location.href = "../account/account.html";
     })
     .catch((error) => {
       const errorCode = error.code;
