@@ -1,6 +1,6 @@
 # Idyll hudpleie
 
-Dette er en nettside for bedriften Idyll hudpleie. br /
+Dette er en nettside for bedriften Idyll hudpleie. <br/>
 Nettsiden skal inneholde følgende:
 
 * Logg inn funksjon for brukere og admin.
