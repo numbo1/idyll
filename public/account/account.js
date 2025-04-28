@@ -1,7 +1,7 @@
 // Importing Firebase modules
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-import { getDatabase, ref, get, child } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+import { getDatabase, ref, get, child, set } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -20,6 +20,8 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app)
 const db = getDatabase(app);
 
+let currentUser = null;
+
 // Logout event listener
 document.getElementById("logout-button").addEventListener("click", async () => {
     try {
@@ -34,6 +36,7 @@ document.getElementById("logout-button").addEventListener("click", async () => {
 // Checks if user is signed in and fetches user data for form fields
 onAuthStateChanged(auth, (user) => {
     if (user) {
+      currentUser = user;
       const uid = user.uid;
       console.log("User is signed in:", uid);
 
@@ -55,24 +58,28 @@ onAuthStateChanged(auth, (user) => {
     }
 });
 
-// Event listerer for the form submission for updating user data
+// Event listener for the form submission for updating user data
 document.getElementById("updateForm").addEventListener("submit", async (event) => {
   event.preventDefault();
   
-  const firstname = document.getElementById("firstname").value;
-  const lastname = document.getElementById("lastname").value;
+  if (currentUser) {  // Check if the user is logged in
+    const firstname = document.getElementById("firstname").value;
+    const lastname = document.getElementById("lastname").value;
 
-  // Store the updated data in the database
-  try {
-    const userRef = ref(db, "users/" + user.uid);
-    await set(userRef, {
-      firstname: firstname,
-      lastname: lastname
-    });
+    // Store the updated data in the database
+    try {
+        const userRef = ref(db, "users/" + currentUser.uid);
+        await set(userRef, {
+            firstname: firstname,
+            lastname: lastname
+        });
 
-    console.log("User data updated successfully");
-    
-  } catch (error) {
-    console.error("Error updating user data:", error);
-  }
+        console.log("User data updated successfully");
+        
+    } catch (error) {
+        console.error("Error updating user data:", error);
+    }
+} else {
+    console.error("No user is logged in to update data.");
+}
 });
