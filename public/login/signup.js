@@ -46,7 +46,7 @@ document.getElementById("signupForm").addEventListener("submit", function (event
         const user = userCredential.user;
         console.log("Bruker opprettet:", user);
         messageElement.textContent = "Registrering vellykket!";
-        window.location.href = "/public/login/login.html";
+        window.location.href = "../login/login.html";
         
     })
     .catch((error) => {
