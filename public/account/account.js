@@ -1,7 +1,7 @@
 // Importing Firebase modules
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-import { getDatabase } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+import { getDatabase, ref, get, child } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -18,7 +18,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app)
-const database = getDatabase(app);
+const db = getDatabase(app);
 
 // Logout event listener
 document.getElementById("logout-button").addEventListener("click", async () => {
@@ -30,3 +30,49 @@ document.getElementById("logout-button").addEventListener("click", async () => {
       console.error("Error signing out:", error);
     }
   });
+
+// Checks if user is signed in and fetches user data for form fields
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const uid = user.uid;
+      console.log("User is signed in:", uid);
+
+      // Fetch user data from the database
+      const dbRef = ref(db);
+      get(child(dbRef, `users/${uid}`)).then((snapshot) => {
+        if (snapshot.exists()) {
+          const userData = snapshot.val();
+          document.getElementById("firstname").placeholder = userData.firstname;
+          document.getElementById("lastname").placeholder = userData.lastname;
+        } else {
+          console.log("No data available for this user.");
+        }
+      }).catch((error) => {
+        console.error("Error fetching user data:", error);
+      });
+    } else {
+      console.log("No user is signed in.");
+    }
+});
+
+// Event listerer for the form submission for updating user data
+document.getElementById("updateForm").addEventListener("submit", async (event) => {
+  event.preventDefault();
+  
+  const firstname = document.getElementById("firstname").value;
+  const lastname = document.getElementById("lastname").value;
+
+  // Store the updated data in the database
+  try {
+    const userRef = ref(db, "users/" + user.uid);
+    await set(userRef, {
+      firstname: firstname,
+      lastname: lastname
+    });
+
+    console.log("User data updated successfully");
+    
+  } catch (error) {
+    console.error("Error updating user data:", error);
+  }
+});

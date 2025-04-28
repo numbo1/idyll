@@ -12,7 +12,7 @@
             <a href="../index.html"><img src="../bilder/cart_icon.png" id="menu"></a>
         </div>
         <div>
-            <img src="#" alt="profile" class="profile">
+            <img src="../bilder/logo.webp" alt="logo" class="logo">
         </div>
         
     </header>
@@ -26,11 +26,10 @@
         <a href="#" class="nav">Kontakt</a>
     </div> -->
     <main>
-        <form action="">
-            <input type="text" id="firstname" class="input" name="firstname" placeholder="fornavn" required> <br>
-            <input type="text" id="lastname" class="input" name="lastname" placeholder="etternavn" required> <br>
-            <input type="text" id="username" class="input" name="username" placeholder="e-post" required> <br>
-            <button>Oppdater konto</button>
+        <form class="update-container" id="updateForm">
+            <input type="text" id="firstname" class="input" name="firstname" placeholder="Fornavn" required> <br>
+            <input type="text" id="lastname" class="input" name="lastname" placeholder="Etternavn" required> <br>
+            <button id="updateButton" type="submit">Oppdater konto</button>
         </form>
         <button id="logout-button">Logg ut</button>
     </main>
