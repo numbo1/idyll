@@ -20,11 +20,16 @@
 
 /*list of services*/
 
+main{
+    padding: 0.5rem;
+    
+}
 
 #introduction {
     margin-left: 30%;
     margin-right: 30%;
     color: #494949;
+    
 }
 
 .container_list {

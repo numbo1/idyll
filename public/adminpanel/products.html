@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Legg til produkt</title>
     <link rel="stylesheet" href="../header.css">
+    <link rel="stylesheet" href="product.css">
 </head>
 <body>
     <header>
@@ -27,18 +28,14 @@
         <a href="#" class="nav">Kontakt</a>
     </div>
     <main>
-        <h1>Legg til produkt</h1>
-        <div>
-            <form id="addProductForm" enctype="multipart/form-data">
-                <input type="text" id="productName" class="input" name="productName" placeholder="Produktnavn" required> <br>
-                <input type="text" id="productBrand" class="input" name="productBrand" placeholder="Merke" required> <br>
-                <input type="number" id="productPrice" class="input" name="productPrice" placeholder="Pris (NOK)" required> <br>
-                <textarea id="productDescription" class="input" name="productDescription" placeholder="Beskrivelse av produktet"></textarea> <br>
-                <input type="file" id="productImage" class="input" name="productImage"> <br>
-                <button type="submit" id="addProductButton">Legg til produkt</button> <br>
-                <div class="message" id="message"></div>
-            </form>
+        <h1>Produkter</h1>
+        <div class="btnContainer">
+            <a href="add_products.html" id="addNew">Legg til ny</a>
         </div>
+        <div class="product-list">
+
+        </div>
+        
     </main>
     <script type="module" src="../usercheck.js"></script>
 </body>

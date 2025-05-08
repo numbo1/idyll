@@ -1,16 +1,16 @@
 .admin-button{
     width: 15rem;
-    height: 12rem;
-    padding: 0.5rem;
-    background-color: rgb(77, 77, 77);
-    color: white;
+    height: 10rem;
+    background-color: transparent;
+    color: #494949;
     cursor: pointer;
     border-radius: 1.5rem;
-    border: none;
+    border-style: solid;
+    border-color: #494949;
     font-size: 1.5rem;
 }
 .admin-button:hover{
-    background-color: rgb(66, 66, 66);  
+    background-color: #bbb3b3;  
 }
 .admin-container{
     display: flex;

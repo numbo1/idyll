@@ -75,6 +75,7 @@ document.getElementById("updateForm").addEventListener("submit", async (event) =
         });
 
         console.log("User data updated successfully");
+        location.reload(); // Reload the page to reflect changes
         
     } catch (error) {
         console.error("Error updating user data:", error);

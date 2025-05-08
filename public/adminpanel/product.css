@@ -1,0 +1,22 @@
+main{
+    backdrop-filter: blur(1rem);
+}
+.btnContainer{
+    display: flex;
+    justify-content: start;
+    padding: 0 2rem;
+}
+#addNew{
+    padding: 0.5rem;
+    width: 8rem;
+    background-color: rgb(92, 126, 112);
+    color: white;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    border: none;
+    font-size: 1rem;
+    text-decoration: none;
+}
+#addNew:hover{
+    background-color: rgb(65, 88, 79);
+}
