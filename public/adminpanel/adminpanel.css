@@ -1,7 +1,7 @@
 .admin-button{
     width: 15rem;
     height: 10rem;
-    background-color: transparent;
+    background-color: white;
     color: #494949;
     cursor: pointer;
     border-radius: 1.5rem;
@@ -10,7 +10,7 @@
     font-size: 1.5rem;
 }
 .admin-button:hover{
-    background-color: #bbb3b3;  
+    background-color: #e3dbdb;  
 }
 .admin-container{
     display: flex;
