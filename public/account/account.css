@@ -31,18 +31,18 @@ header{
     
 }
 
-#menu {
+#back_button {
     cursor: pointer;
     position: absolute;
     padding: 0.5rem 1rem;
     left: 1rem;
     top: 1.5rem;
-    width: 5rem;
+    font-size: 3rem;
     text-decoration: none;
     color: #303030;
     transition: transform 0.2s ease;
 }
-.menu:hover{
+.back_button:hover{
     transform: scale(1.05);
 
 }

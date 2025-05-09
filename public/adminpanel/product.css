@@ -1,5 +1,5 @@
 main{
-    backdrop-filter: blur(1rem);
+    padding: 1rem;
 }
 .btnContainer{
     display: flex;
@@ -19,4 +19,39 @@ main{
 }
 #addNew:hover{
     background-color: rgb(65, 88, 79);
+}
+
+.input{
+    width: 17rem;
+    padding: 0.5rem;
+    margin: 0.2rem;
+    box-sizing: border-box;
+    border-radius: 0.5rem;
+    border: none;
+}
+
+.btn{
+    width: 10rem;
+    padding: 0.5rem;
+    margin: 0.2rem;
+    background-color: rgb(92, 126, 112);
+    color: white;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    border: none;
+}
+
+.btn:hover{
+    background-color: rgb(65, 88, 79);
+}
+
+#productImg{
+    width: 17rem;
+    padding: 0.5rem;
+    margin: 0.2rem;
+    background-color: rgb(92, 126, 112);
+    color: white;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    border: none;
 }
