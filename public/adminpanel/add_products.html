@@ -33,12 +33,12 @@
             <form id="addProductForm" enctype="multipart/form-data">
                 <input type="text" id="productName" class="input" name="productName" placeholder="Produktnavn" required> <br>
                 <input type="text" id="productBrand" class="input" name="productBrand" placeholder="Merke" required> <br>
-                <input type="number" id="productPrice" class="input" name="productPrice" placeholder="Pris (NOK)" required> <br>
                 <textarea id="productDescription" class="input" name="productDescription" placeholder="Beskrivelse av produktet"></textarea> <br>
-                <input type="number" id="inventoryCount" class="input" name="productCount" placeholder="Lagerantall"> <br>
+                <input type="number" id="productPrice" class="input" name="productPrice" placeholder="Pris (NOK)" required>
+                <input type="number" id="inventoryCount" class="input" name="productCount" placeholder="Lagerantall" required> <br>
                 <input type="file" id="productImg" class="input" name="productImage"> <br>
                 <button type="submit" id="addProductBtn" class="btn">Legg til produkt</button>
-                <button type="button" id="cancel" class="btn">Cancel</button> <br>
+                <button type="button" id="cancel" class="btn">Avbryt</button> <br>
                 <div class="message" id="message"></div>
             </form>
         </div>
