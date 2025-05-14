@@ -36,9 +36,9 @@ document.getElementById("cancel").addEventListener("click", async () => {
   function addProduct(brand, line, name, price, description, image, count) {
     const productsRef = ref(db, 'products');
 
-    const brand = document.getElementById("brand").value;
+    const brand = document.getElementById("productBrand").value;
     const line = document.getElementById("line").value;
-    const name = document.getElementById("name").value;
+    const name = document.getElementById("ProductName").value;
     const price = document.getElementById("price").value;
     const description = document.getElementById("description").value;
     const image = document.getElementById("image").value;
