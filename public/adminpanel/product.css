@@ -31,10 +31,10 @@ main{
 }
 
 #productPrice{
-    width: 8rem;
+    width: 8.2rem;
 }
-#inventoryCount{
-    width: 8rem;
+#productStock{
+    width: 8.2rem;
 }
 
 .btn{
@@ -52,7 +52,7 @@ main{
     background-color: rgb(65, 88, 79);
 }
 
-#productImg{
+#productImage{
     width: 17rem;
     padding: 0.5rem;
     margin: 0.2rem;
