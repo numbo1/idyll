@@ -1,6 +1,6 @@
 // Importing Firebase modules
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+import { getAuth, onAuthStateChanged, setPersistence, browserLocalPersistence } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 import { getDatabase, ref, get, child, set, push } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
 // Firebase configuration
@@ -21,9 +21,7 @@ const auth = getAuth(app)
 const db = getDatabase(app);
 
 
-
-
-// Logout event listener
+// cancel event listener
 document.getElementById("cancel").addEventListener("click", async () => {
     try {
       console.log("User canceled the action");
@@ -34,7 +32,7 @@ document.getElementById("cancel").addEventListener("click", async () => {
 });
 
 function addProduct(brand, line, name, price, description, image, stock) {
-  const productsRef = ref(db, 'products');
+  const productsRef = ref(db, 'product');
 
   // Creating a new random product ID/ reference
   const newProductRef = push(productsRef);
@@ -59,8 +57,8 @@ function addProduct(brand, line, name, price, description, image, stock) {
   });
 }
 
-document.getElementById("addProductForm").addEventListener("click", (e) => {
-  e.preventDefault(); // Prevent the default form submission
+document.getElementById("addProductForm").addEventListener("submit", (event) => {
+  event.preventDefault(); // Prevent the default form submission
 
   const brand = document.getElementById("productBrand").value;
   const line = document.getElementById("productLine").value;
@@ -75,55 +73,6 @@ document.getElementById("addProductForm").addEventListener("click", (e) => {
 
 });
 
-onAuthStateChanged(auth, (user) => {
-    if (user) {
-      currentUser = user;
-      const uid = user.uid;
-      console.log("User is signed in:", uid);
-  
-      // Fetch user data from the database
-      const dbRef = ref(db);
-      get(child(dbRef, `users/${uid}`)).then((snapshot) => {
-        if (snapshot.exists()) {
-          const userData = snapshot.val();
-        } else {
-          console.log("No data available for this user.");
-        }
-      }).catch((error) => {
-        console.error("Error fetching user data:", error);
-      });
-    } else {
-      console.log("No user is signed in.");
-    }
-});
-  
-// Event listener for the form submission for updating user data
-document.getElementById("updateForm").addEventListener("submit", async (event) => {
-  event.preventDefault();
-    
-  if (currentUser) {  // Check if the user is logged in
-    const firstname = document.getElementById("firstname").value;
-    const lastname = document.getElementById("lastname").value;
-  
-    // Store the updated data in the database
-    try {
-        const userRef = ref(db, "users/" + currentUser.uid);
-        await set(userRef, {
-            firstname: firstname,
-            lastname: lastname
-        });
-  
-        console.log("User data updated successfully");
-        location.reload(); // Reload the page to reflect changes
-          
-    } catch (error) {
-        console.error("Error updating user data:", error);
-    }
-} else {
-    console.error("No user is logged in to update data.");
-}
-});
-
   //Saves data in browsers memory
   setPersistence(auth, browserLocalPersistence)
       .then(() => {
@@ -136,13 +85,13 @@ document.getElementById("updateForm").addEventListener("submit", async (event) =
   //Check if user is logged in and if user is admin or not
   onAuthStateChanged(auth, async (user) => {
       if (!user) {
-          console.log("User not logged in");
-          windows.location.href = "../index.html";
+          window.location.href = "../index.html";
+          return;
       }
-  
       try {
               // Get the ID token result to check for custom claims
               const idTokenResult = await user.getIdTokenResult(true);
+              console.log(idTokenResult.claims);
               const claims = idTokenResult.claims;
   
           if (claims.admin === true) {
@@ -151,7 +100,7 @@ document.getElementById("updateForm").addEventListener("submit", async (event) =
               
           } else {
               console.log("Regular user");
-              windows.location.href = "../index.html";
+              window.location.href = "../index.html";
           }
       } catch (error) {
           // Handle any errors that occur while getting the token claims

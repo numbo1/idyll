@@ -62,3 +62,47 @@ main{
     border-radius: 0.5rem;
     border: none;
 }
+
+#productList{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 5% 0 5% 0;
+}
+.product-card{
+    word-wrap: break-word;
+    width: 15rem;
+    height: 30rem;
+    background-color: white;
+    color: #494949;
+    cursor: pointer;
+    border-radius: 1.5rem;
+    border: none;
+    font-size: medium;
+}
+.product-card img{
+    width: 13.5rem;
+    margin: 0.5rem;
+    border-style: solid;
+    border-width: 0.1rem;
+    border-color: #303030;
+    border-radius: 1.5rem; 
+}
+
+.btn-group{
+    display: flex;
+    justify-content: space-between;
+    align-content: flex-end;
+    padding: 1rem;
+}
+.btn{
+    width: 5rem;
+    padding: 0.5rem;
+    margin: 0.2rem;
+    background-color: rgb(92, 126, 112);
+    color: white;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    border: none;
+}
