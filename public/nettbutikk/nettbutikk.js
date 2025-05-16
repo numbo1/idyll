@@ -34,6 +34,16 @@ window.addEventListener('DOMContentLoaded', () => {
         this.image = data.image || "";
         this.stock = data.stock || "";
     }
+
+    class Cart {
+        constructor() {
+            this.items = JSON.parse(localStorage.getItem("cart")) || [];
+        }
+        add(productId, quantity = 1) {
+
+        }
+    }
+
     render() {
         const card = document.createElement("div");
         card.className = "product-card";
@@ -47,7 +57,6 @@ window.addEventListener('DOMContentLoaded', () => {
                 <button class="cart_btn"><img src="../bilder/cart.png" alt="add to cart" class="cart_img"></button>
             </div>
         `;
-
         return card;
         }
     }
