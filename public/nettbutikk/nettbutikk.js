@@ -39,15 +39,13 @@ window.addEventListener('DOMContentLoaded', () => {
         card.className = "product-card";
 
         card.innerHTML = `
-        <img src="../bilder/testimage_online_store.webp" alt="${this.name}">
-        <p><strong>${this.name}</strong></p>
-        <p>Brand: ${this.brand}</p>
-        <p>Price: ${this.price} kr</p>
-        <p>In stock: ${this.stock}</p>
-        <div class="btn-group">
-        <button class="btn" onclick="window.location.href='edit_product.html?id=${this.id}'">Rediger</button>
-        <button class="btn" onclick="deleteProduct('${this.id}')">Slett</button>
-        </div>
+            <img src="../bilder/testimage_online_store.webp" alt="${this.name}" class="product_image">
+            <div class="brand">${this.brand}</div>
+            <div class="product_name">${this.name}</div>
+            <div class="flex_price_cart">
+                <div class="price">${this.price} kr</div>
+                <button class="cart_btn"><img src="../bilder/cart.png" alt="add to cart" class="cart_img"></button>
+            </div>
         `;
 
         return card;
