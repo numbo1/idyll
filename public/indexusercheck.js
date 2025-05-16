@@ -1,22 +1,6 @@
 //Importer moduler
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
-import { getAuth, onAuthStateChanged, setPersistence, browserLocalPersistence } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
-
-//Konfigurering av firebase
-const firebaseConfig = {
-    apiKey: "AIzaSyDDbWAlPBNh4vnIRMzGq1hHDJSOB48H83A",
-    authDomain: "idyll-f6405.firebaseapp.com",
-    databaseURL: "https://idyll-f6405-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "idyll-f6405",
-    storageBucket: "idyll-f6405.firebasestorage.app",
-    messagingSenderId: "820088340754",
-    appId: "1:820088340754:web:525f3f5fa2af8c50cf33cb",
-    measurementId: "G-EPNK7242P4"
-};
-
-// Initialiser Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+import { initializeApp } from "./firebase.js";
+import { auth, onAuthStateChanged, setPersistence, browserLocalPersistence } from "./firebase.js";
 
 //Saves data in browsers memory
 setPersistence(auth, browserLocalPersistence)
@@ -36,7 +20,7 @@ onAuthStateChanged(auth, async (user) => {
         document.getElementById("account").addEventListener("click", () => {
             window.location.href = "login/login.html";
         });
-        
+        return;
     }
 
     try {
@@ -57,8 +41,6 @@ onAuthStateChanged(auth, async (user) => {
             <a href="index.html" class="nav">Forside</a>
             <a href="#" class="nav">Bestille time</a>
             <a href="nettbutikk/nettbutikk.html" class="nav">Nettbutikk</a>
-            <a href="#" class="nav">Prisliste</a>
-            <a href="#" class="nav">Galleri</a>
             <a href="#" class="nav">Kontakt</a>
             <a href="adminpanel/adminpanel.html" class="nav">Adminpanel</a>
             `;

@@ -11,21 +11,21 @@
 <body>
     <header>
         <div>
-            <a href="#"><img src="../bilder/cart_icon.png" alt="cart" class="cart"></a>
+            <a href="../login/login.html"><img src="../bilder/user_icon.png" alt="account" id="account" class="account"></a>
         </div>
         <div>
             <img src="../bilder/logo.webp" alt="logo" class="logo">
         </div>
-        <div>
-            <img src="../bilder/user_icon.png" alt="account" class="account" id="account">
+        <div id="cart-container">
+            <a href="#"><img src="../bilder/cart_icon.png" alt="cart" class="cart" id="cart"></a>
+            <div id="cart-products">
+            </div>
         </div>
     </header>
     <div class="navigation" id="navigation">
         <a href="../index.html" class="nav">Forside</a>
         <a href="#" class="nav">Bestille time</a>
         <a href="../nettbutikk.html" class="nav">Nettbutikk</a>
-        <a href="#" class="nav">Prisliste</a>
-        <a href="#" class="nav">Galleri</a>
         <a href="#" class="nav">Kontakt</a>
     </div>
     <main>
@@ -33,12 +33,14 @@
         <div class="btnContainer">
             <a href="add_product.html" id="addNew">Legg til ny</a>
         </div>
-        <div id="productList">
+        <div id="productAdminList">
 
         </div>
         
     </main>
     <script type="module" src="../usercheck.js"></script>
     <script type="module" src="display_products.js"></script>
+    <script src="../header.js"></script>
+    <script type="module" src="../nettbutikk/nettbutikk.js"></script>
 </body>
 </html>

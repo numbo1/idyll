@@ -61,3 +61,35 @@ header{
 .nav:hover{
     text-decoration: underline;
 }
+
+/*Cart toggle*/
+#cart-container {
+    position: relative;
+    display: inline-block;
+    
+}
+
+#cart-products {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    min-width: 20rem;
+    max-height: 20rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 999;
+    border: none;
+    border-radius: 1.5rem;
+    padding: 0.5rem;
+    box-sizing: border-box;
+  }
+  #cart-products.show{
+    display: block;
+  }
+  
+
+
+
+

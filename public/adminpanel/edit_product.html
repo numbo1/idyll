@@ -29,7 +29,7 @@
         <a href="#" class="nav">Kontakt</a>
     </div>
     <main>
-        <h1>Legg til produkt</h1>
+        <h1>Rediger produkt</h1>
         <div>
             <form id="addProductForm" enctype="multipart/form-data">
                 <input type="text" id="productName" class="input" name="productName" placeholder="Produktnavn" required> <br>
@@ -39,15 +39,19 @@
                 <input type="number" id="productPrice" class="input" name="productPrice" placeholder="Pris (NOK)" required>
                 <input type="number" id="productStock" class="input" name="productStock" placeholder="Lagerantall" required> <br>
                 <input type="file" id="productImage" class="input" name="productImage"> <br>
-                <button type="submit" id="addProductBtn" class="btn">Legg til produkt</button>
+                <button type="submit" id="saveBtn" class="btn">Lagre</button>
                 <button type="button" id="cancel" class="btn">Avbryt</button> <br>
                 <div class="message" id="message"></div>
             </form>
         </div>
     </main>
     <script type="module" src="../usercheck.js"></script>
-    <script type="module" src="add_product.js"></script>
     <script type="module" src="../nettbutikk/nettbutikk.js"></script>
+    <script type="module" src="edit_product.js"></script>
+    
     <script src="../header.js"></script>
+    <script type="module" src="../nettbutikk/nettbutikk.js"></script>
+    <script type="module" src="edit_product.js"></script>
+    <script type="module" src="../usercheck.js"></script>
 </body>
 </html>

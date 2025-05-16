@@ -1,66 +1,91 @@
 // Firebase imports
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+import { initializeApp } from "../firebase.js";
+import { db, ref, onValue } from "../firebase.js";
+import { getAuth, onAuthStateChanged, setPersistence, browserLocalPersistence } from "../firebase.js";
 
-// Firebase config
-const firebaseConfig = {
-  apiKey: "AIzaSyDDbWAlPBNh4vnIRMzGq1hHDJSOB48H83A",
-  authDomain: "idyll-f6405.firebaseapp.com",
-  databaseURL: "https://idyll-f6405-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "idyll-f6405",
-  storageBucket: "idyll-f6405.appspot.com",
-  messagingSenderId: "820088340754",
-  appId: "1:820088340754:web:525f3f5fa2af8c50cf33cb",
-  measurementId: "G-EPNK7242P4"
-};
+const auth = getAuth();
+class Cart {
+    constructor(cartElementId) {
+        this.cart = [];
+        this.cartElement = document.getElementById(cartElementId);
+        this.loadCart();
+        this.renderCart();
+    }
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
+    addProduct(product) {
+        if (this.cart.some(p => p.id === product.id)) return;
+        this.cart.push(product);
+        this.saveCart();
+        this.renderCart();
+    }
+
+    saveCart() {
+        localStorage.setItem("cart", JSON.stringify(this.cart));
+    }
+
+    loadCart() {
+        const data = localStorage.getItem("cart");
+        this.cart = data ? JSON.parse(data) : [];
+    }
+
+    renderCart() {
+        if (!this.cartElement) return;{
+            this.cartElement.innerHTML = "";
+        }
+
+        if (this.cart.length === 0) {
+            this.cartElement.innerHTML = "<p>Ingen produkter i handlekurven.</p>";
+            return;
+        }
+
+        this.cart.forEach(product => {
+            const div = document.createElement("div");
+            div.innerHTML = `<strong>${product.name}</strong> - ${product.price} kr<hr>`;
+            this.cartElement.appendChild(div);
+        });
+    }
+}
 
 window.addEventListener('DOMContentLoaded', () => {
 
     // DOM element where products will be displayed
     const productList = document.getElementById("productList");
+    const cart = new Cart("cart-products");
+    const productsRef = ref(db, "product");
 
     class Product {
-    constructor(id, data) {
-        this.id = id;
-        this.brand = data.brand || "";
-        this.line = data.line || "";
-        this.name = data.name || "";
-        this.price = data.price || "";
-        this.description = data.description || "";
-        this.image = data.image || "";
-        this.stock = data.stock || "";
-    }
-
-    class Cart {
-        constructor() {
-            this.items = JSON.parse(localStorage.getItem("cart")) || [];
+        constructor(id, data) {
+            this.id = id;
+            this.brand = data.brand || "";
+            this.line = data.line || "";
+            this.name = data.name || "";
+            this.price = data.price || "";
+            this.description = data.description || "";
+            this.image = data.image || "";
+            this.stock = data.stock || "";
         }
-        add(productId, quantity = 1) {
-
-        }
+        render() {
+            const card = document.createElement("div");
+            card.className = "product-card";
+    
+            card.innerHTML = `
+                <img src="../bilder/testimage_online_store.webp" alt="${this.name}" class="product_image">
+                <div class="brand">${this.brand}</div>
+                <div class="product_name">${this.name}</div>
+                <div class="flex_price_cart">
+                    <div class="price">${this.price} kr</div>
+                    <button class="cart_btn" 
+                    data-id="${this.id}"
+                    data-name="${this.name}"
+                    data-price="${this.price}">
+                    <img src="../bilder/cart.png" alt="add to cart" class="cart_img">
+                    </button>
+                </div>
+            `;
+            return card;
+            
+        };
     }
-
-    render() {
-        const card = document.createElement("div");
-        card.className = "product-card";
-
-        card.innerHTML = `
-            <img src="../bilder/testimage_online_store.webp" alt="${this.name}" class="product_image">
-            <div class="brand">${this.brand}</div>
-            <div class="product_name">${this.name}</div>
-            <div class="flex_price_cart">
-                <div class="price">${this.price} kr</div>
-                <button class="cart_btn"><img src="../bilder/cart.png" alt="add to cart" class="cart_img"></button>
-            </div>
-        `;
-        return card;
-        }
-    }
-    const productsRef = ref(db, "product");
 
     onValue(productsRef, (snapshot) => {
         console.log("Snapshot:", snapshot.val());
@@ -74,8 +99,55 @@ window.addEventListener('DOMContentLoaded', () => {
                 const product = new Product(id, data);
                 productList.appendChild(product.render());
             });
+
+            document.querySelectorAll(".cart_btn").forEach(button => {
+                button.addEventListener("click", () => {
+                    const product = {
+                        id: button.dataset.id,
+                        name: button.dataset.name,
+                        price: button.dataset.price
+                    };
+                    cart.addProduct(product);
+                });
+            });
         } else {
             productList.innerHTML = "<p>No products available.</p>";
         }
     });
+});
+
+// Check if user is logged in and if user is admin or not
+//Saves data in browsers memory
+setPersistence(auth, browserLocalPersistence)
+.then(() => {
+    console.log("✅ Auth persistence set to local");
+})
+.catch((error) => {
+    console.error("Error setting auth persistence:", error);
+});
+
+//Check if user is logged in and if user is admin or not
+onAuthStateChanged(auth, async (user) => {
+if (!user) {
+    window.location.href = "../index.html";
+    return;
+}
+try {
+        // Get the ID token result to check for custom claims
+        const idTokenResult = await user.getIdTokenResult(true);
+        console.log(idTokenResult.claims);
+        const claims = idTokenResult.claims;
+
+    if (claims.admin === true) {
+        console.log("Admin user");
+
+        
+    } else {
+        console.log("Regular user");
+        window.location.href = "../index.html";
+    }
+} catch (error) {
+    // Handle any errors that occur while getting the token claims
+    console.error("Error getting token claims:", error);
+}
 });
