@@ -1,4 +1,4 @@
-//Importer moduler
+//Import modules
 import { initializeApp } from "./firebase.js";
 import { auth, onAuthStateChanged, setPersistence, browserLocalPersistence } from "./firebase.js";
 
@@ -17,29 +17,33 @@ onAuthStateChanged(auth, async (user) => {
     const navigation = document.getElementById("navigation");
 
     if (!user) {
-        console.log("❌ User not logged in");
+        console.log("User not logged in");
 
-        // Endre knapp til login
+        // Change button to login button
         accountBtn.addEventListener("click", () => {
             window.location.href = "login/login.html";
         });
 
-        return; // Viktig! Stopper resten av koden!
+        return; 
     }
 
-    console.log("✅ User is logged in");
+    console.log("User is logged in");
 
     try {
+        // Get the ID token result to check for custom claims
+        // This will include the admin claim if it exists
         const idTokenResult = await user.getIdTokenResult(true);
         const claims = idTokenResult.claims;
 
         if (claims.admin === true) {
-            console.log("👑 Admin user");
+            console.log("Admin user");
 
+            // Change button to admin panel button
             accountBtn.addEventListener("click", () => {
                 window.location.href = "../account/account.html";
             });
 
+            // Add admin navigation links
             navigation.innerHTML = `
                 <a href="../index.html" class="nav">Forside</a>
                 <a href="#" class="nav">Bestille time</a>
@@ -48,8 +52,8 @@ onAuthStateChanged(auth, async (user) => {
                 <a href="../adminpanel/adminpanel.html" class="nav">Adminpanel</a>
             `;
         } else {
-            console.log("🧍‍♂️ Regular user");
-
+            console.log("Regular user");
+            // Change button to account button
             accountBtn.addEventListener("click", () => {
                 window.location.href = "../account/account.html";
             });

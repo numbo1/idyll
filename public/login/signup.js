@@ -1,7 +1,6 @@
 // Import Firebase modules
 import { initializeApp } from "../firebase.js";
-import { getAuth, createUserWithEmailAndPassword } from "../firebase.js";
-const auth = getAuth();
+import { auth, createUserWithEmailAndPassword } from "../firebase.js";
 
 // Event listener for the signup form submission
 document.getElementById("signupForm").addEventListener("submit", function (event) {

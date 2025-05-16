@@ -1,29 +1,35 @@
-import { getAuth, onAuthStateChanged, setPersistence, browserLocalPersistence } from "../firebase.js";
+// Import modules
+import { auth, onAuthStateChanged, setPersistence, browserLocalPersistence } from "../firebase.js";
 import { db, ref, get, set } from '../firebase.js';
-const auth = getAuth();
 
+// fetches the product ID from the URL
+// This is used to identify which product to edit
 const urlParams = new URLSearchParams(window.location.search);
+
+// Get the productId from the URL
+// Example URL: edit_product.html?productId=12345
 const productId = urlParams.get('productId');
 
-const productRef = ref(db, `products/${productId}`);
-
+// Check if productId is present in the URL
 get(productRef).then(snapshot => {
     if (snapshot.exists()) {
         const product = snapshot.val();
+        // Populate the form fields with product data
         document.getElementById('productName').value = product.name || '';
         document.getElementById('productBrand').value = product.brand || '';
         document.getElementById('productLine').value = product.line || '';
         document.getElementById('productDescription').value = product.description || '';
         document.getElementById('productPrice').value = product.price || '';
         document.getElementById('productStock').value = product.stock || '';
-        // Merk: Du kan ikke forhåndsutfylle file input av sikkerhetsgrunner
     } else {
+        // If the product does not exist, show a message
         document.getElementById('message').innerText = 'Produktet finnes ikke.';
     }
 }).catch(error => {
     console.error('Feil ved henting av produkt:', error);
 });
 
+// Reference to the product in the database
 document.getElementById('addProductForm').addEventListener('submit', async (e) => {
     e.preventDefault();
 

@@ -1,10 +1,12 @@
 // Firebase imports
 import { initializeApp } from "../firebase.js";
 import { db, ref, onValue } from "../firebase.js";
-import { getAuth, onAuthStateChanged, setPersistence, browserLocalPersistence } from "../firebase.js";
+import { auth, onAuthStateChanged, setPersistence, browserLocalPersistence } from "../firebase.js";
 
-const auth = getAuth();
+// Class cart
+// This class handles the cart functionality, including adding products, saving to local storage, and rendering the cart.
 class Cart {
+    // Constructor for the Cart class
     constructor(cartElementId) {
         this.cart = [];
         this.cartElement = document.getElementById(cartElementId);
@@ -12,6 +14,8 @@ class Cart {
         this.renderCart();
     }
 
+    // Adds a product to the cart
+    // Checks if the product is already in the cart before adding it
     addProduct(product) {
         if (this.cart.some(p => p.id === product.id)) return;
         this.cart.push(product);
@@ -19,15 +23,20 @@ class Cart {
         this.renderCart();
     }
 
+    // Saves the cart to local storage
+    // Converts the cart array to a JSON string and saves it in local storage
     saveCart() {
         localStorage.setItem("cart", JSON.stringify(this.cart));
     }
 
+    // Loads the cart from local storage
     loadCart() {
         const data = localStorage.getItem("cart");
         this.cart = data ? JSON.parse(data) : [];
     }
 
+    // Renders the cart in the specified DOM element
+    // Clears the cart element and displays each product in the cart
     renderCart() {
         if (!this.cartElement) return;{
             this.cartElement.innerHTML = "";
@@ -46,6 +55,7 @@ class Cart {
     }
 }
 
+//
 window.addEventListener('DOMContentLoaded', () => {
 
     // DOM element where products will be displayed
@@ -120,7 +130,7 @@ window.addEventListener('DOMContentLoaded', () => {
 //Saves data in browsers memory
 setPersistence(auth, browserLocalPersistence)
 .then(() => {
-    console.log("✅ Auth persistence set to local");
+    console.log("Auth persistence set to local");
 })
 .catch((error) => {
     console.error("Error setting auth persistence:", error);
@@ -129,8 +139,8 @@ setPersistence(auth, browserLocalPersistence)
 //Check if user is logged in and if user is admin or not
 onAuthStateChanged(auth, async (user) => {
 if (!user) {
-    window.location.href = "../index.html";
-    return;
+    console.log("User not logged in");
+
 }
 try {
         // Get the ID token result to check for custom claims
@@ -138,13 +148,12 @@ try {
         console.log(idTokenResult.claims);
         const claims = idTokenResult.claims;
 
+    // Check if the user has the admin claim
     if (claims.admin === true) {
         console.log("Admin user");
 
-        
     } else {
         console.log("Regular user");
-        window.location.href = "../index.html";
     }
 } catch (error) {
     // Handle any errors that occur while getting the token claims

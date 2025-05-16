@@ -3,13 +3,12 @@ import { initializeApp } from "../firebase.js";
 import { auth, onAuthStateChanged, signOut } from "../firebase.js";
 import { db, ref, get, child, set } from "../firebase.js";
 
-
-
 let currentUser = null;
 
 // Logout event listener
 document.getElementById("logout-button").addEventListener("click", async () => {
     try {
+      // Sign out the user
       await signOut(auth);
       console.log("User signed out successfully");
       window.location.href = "../index.html";
@@ -29,6 +28,7 @@ onAuthStateChanged(auth, (user) => {
       const dbRef = ref(db);
       get(child(dbRef, `users/${uid}`)).then((snapshot) => {
         if (snapshot.exists()) {
+          // Populate the form fields with user data
           const userData = snapshot.val();
           document.getElementById("firstname").placeholder = userData.firstname;
           document.getElementById("lastname").placeholder = userData.lastname;
@@ -51,14 +51,14 @@ document.getElementById("updateForm").addEventListener("submit", async (event) =
     const firstname = document.getElementById("firstname").value;
     const lastname = document.getElementById("lastname").value;
 
-    // Store the updated data in the database
+    // Store the updated data in the database undert the user's UID
+    // This will overwrite the existing data
     try {
         const userRef = ref(db, "users/" + currentUser.uid);
         await set(userRef, {
             firstname: firstname,
             lastname: lastname
         });
-
         console.log("User data updated successfully");
         location.reload(); // Reload the page to reflect changes
         
