@@ -25,24 +25,8 @@
 
 }
 
-.product{
-    text-decoration: none;
-    color: #303030;
-    background-color: white;
-    text-align: center;
-    width: 15rem;
-    border-radius: 1rem;
-}
-
-.product_img{
-    width: 13.5rem;
-    margin: 0.5rem;
-    border-style: solid;
-    border-width: 0.1rem;
-    border-color: #303030;
-    border-radius: 1rem;
-}
-
+/*Product list*/
+/*Product card*/
 .brand{
     font-size: large;
     font-weight: bold;

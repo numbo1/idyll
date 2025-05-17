@@ -8,6 +8,7 @@
 </head>
 <body>
     <header>
+        <!-- Header -->
         <div>
             <a id="back_button" href="../index.html">&larr;</a>
         </div>
@@ -17,20 +18,15 @@
         
     </header>
     <h1 class="welcome">Konto</h1>
-    <!-- <div class="navigation">
-        <a href="../index.html" class="nav">Forside</a>
-        <a href="#" class="nav">Bestille time</a>
-        <a href="../nettbutikk.html" class="nav">Nettbutikk</a>
-        <a href="#" class="nav">Prisliste</a>
-        <a href="#" class="nav">Galleri</a>
-        <a href="#" class="nav">Kontakt</a>
-    </div> -->
+    
     <main>
+        <!-- Update account form -->
         <form class="update-container" id="updateForm">
             <input type="text" id="firstname" class="input" name="firstname" placeholder="Fornavn" required> <br>
             <input type="text" id="lastname" class="input" name="lastname" placeholder="Etternavn" required> <br>
             <button id="updateButton" type="submit">Oppdater konto</button>
         </form>
+        <!-- Log out button -->
         <button id="logout-button">Logg ut</button>
     </main>
     <script type="module" src="account.js"></script>
