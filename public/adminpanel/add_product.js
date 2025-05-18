@@ -4,6 +4,35 @@ import { getAuth, onAuthStateChanged, setPersistence, browserLocalPersistence } 
 import { db, ref, get, child, set, push } from "../firebase.js";
 const auth = getAuth();
 
+//Kicks non authenticated users out of the page
+  onAuthStateChanged(auth, async (user) => {
+    // If user is not logged in, redirect to login page
+    if (!user) {
+        window.location.href = "../index.html";
+        return;
+    }
+    // If user is logged in, check if they are an admin
+    try {
+        const idTokenResult = await user.getIdTokenResult(true);
+        const claims = idTokenResult.claims;
+
+        // Check if the user has the admin claim
+        if (claims.admin !== true) {
+            // If not an admin, redirect to index page
+            console.log("Not an admin");
+            window.location.href = "../index.html";
+        } else {
+            console.log("Admin user");
+            loadProductForEditing(); // Load product only if admin
+        }
+    } catch (error) {
+        // Handle any errors that occur while getting the token claims
+        // Redriects to index page anyways for security measures
+        console.error("Error getting token claims:", error);
+        window.location.href = "../index.html";
+    }
+});
+
 // cancel event listener
 document.getElementById("cancel").addEventListener("click", async () => {
     try {
@@ -31,12 +60,12 @@ function addProduct(brand, line, name, price, description, image, stock) {
   })
   .then(()=> {
       console.log("Product added with ID: ", newProductRef.key);
-      alert("Product added successfully!");
+      document.getElementById('message').innerText = "Produkt lagt til.";
       window.location.href = "products.html";
   })
   .catch((error) => {
       console.error("Error adding product: ", error);
-      alert("Error adding product: " + error.message);
+      document.getElementById('message').innerText = "Feil ved oppdatering av produkt." + error.message;
   });
 }
 
@@ -59,34 +88,9 @@ document.getElementById("addProductForm").addEventListener("submit", (event) => 
   //Saves data in browsers memory
   setPersistence(auth, browserLocalPersistence)
       .then(() => {
-          console.log("✅ Auth persistence set to local");
+          console.log("Auth persistence set to local");
       })
       .catch((error) => {
           console.error("Error setting auth persistence:", error);
   });
   
-  //Check if user is logged in and if user is admin or not
-  onAuthStateChanged(auth, async (user) => {
-      if (!user) {
-          window.location.href = "../index.html";
-          return;
-      }
-      try {
-              // Get the ID token result to check for custom claims
-              const idTokenResult = await user.getIdTokenResult(true);
-              console.log(idTokenResult.claims);
-              const claims = idTokenResult.claims;
-  
-          if (claims.admin === true) {
-              console.log("Admin user");
-  
-              
-          } else {
-              console.log("Regular user");
-              window.location.href = "../index.html";
-          }
-      } catch (error) {
-          // Handle any errors that occur while getting the token claims
-          console.error("Error getting token claims:", error);
-      }
-  });
