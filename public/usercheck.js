@@ -21,7 +21,7 @@ onAuthStateChanged(auth, async (user) => {
 
         // Change button to login button
         accountBtn.addEventListener("click", () => {
-            window.location.href = "login/login.html";
+            window.location.href = "../login/login.html";
         });
 
         return; 

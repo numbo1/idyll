@@ -23,7 +23,6 @@ const auth = getAuth();
             window.location.href = "../index.html";
         } else {
             console.log("Admin user");
-            loadProductForEditing(); // Load product only if admin
         }
     } catch (error) {
         // Handle any errors that occur while getting the token claims
