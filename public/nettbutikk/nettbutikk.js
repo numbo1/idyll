@@ -17,10 +17,38 @@ class Cart {
     // Adds a product to the cart
     // Checks if the product is already in the cart before adding it
     addProduct(product) {
-        if (this.cart.some(p => p.id === product.id)) return;
-        this.cart.push(product);
+        const existingProduct = this.cart.find(p => p.id === product.id);
+        if (existingProduct) {
+            existingProduct.quantity += 1;
+        } else {
+            product.quantity = 1;
+            this.cart.push(product);
+        }
         this.saveCart();
         this.renderCart();
+    }
+
+    // Adds on quantity to the product in the cart
+    increaseQuantity(productId) {
+        const product = this.cart.find(p => p.id === productId);
+        if (product) {
+            product.quantity += 1;
+            this.saveCart();
+            this.renderCart();
+        }
+    }
+
+    // Reduces one quantity to the product in the cart, if the quantity is 0, it removes the product from the cart
+    reduceQuantity(productId) {
+        const productIndex = this.cart.findIndex(p => p.id === productId);
+        if (productIndex !== -1) {
+            this.cart[productIndex].quantity -= 1;
+            if (this.cart[productIndex].quantity <= 0) {
+                this.cart.splice(productIndex, 1); // remove from cart
+            }
+            this.saveCart();
+            this.renderCart();
+        }
     }
 
     // Saves the cart to local storage
@@ -38,38 +66,72 @@ class Cart {
     // Renders the cart in the specified DOM element
     // Clears the cart element and displays each product in the cart
     renderCart() {
-        if (!this.cartElement) return;{
-            this.cartElement.innerHTML = "";
-        }
+        if (!this.cartElement) return;
 
+        // If the cart is empty, show a message and clear any previous content
         if (this.cart.length === 0) {
             this.cartElement.innerHTML = "<p>Ingen produkter i handlekurven.</p>";
             return;
-        }
-
+            }
+        
+        // Loops the cart element and displays each product in the cart
         this.cart.forEach(product => {
-            const div = document.createElement("div");
-            div.className = "productView"
-            div.innerHTML = `
-                <div class="flexbox_info">
-                    <div class="cartItem_image">
-                        <img src="../bilder/testimage_online_store.webp" alt="${this.name}" class="cart_image">
+            // Check if product is already rendered
+            let existingDiv = this.cartElement.querySelector(`.productView[data-id="${product.id}"]`);
+
+            // If not rendered yet, create a new div
+            if (!existingDiv) {
+                const div = document.createElement("div");
+                div.className = "productView";
+                div.setAttribute("data-id", product.id);
+
+                div.innerHTML = `
+                    <div class="flexbox_info">
+                        <div class="cartItem_image">
+                            <img src="../bilder/testimage_online_store.webp" alt="${product.name}" class="cart_image">
+                        </div>
+                        <div class="cartItem_name">${product.name}</div> 
+                        <div class="cartItem_price">${product.price} kr</div>
                     </div>
-                    <div class="cartItem_name">${product.name}</div> 
-                    <div class="cartItem_price">${product.price} kr</div>
-                </div>
-                <div class="flexbox_btn">
-                    <button>-</button>
-                    <div class="displayCount">1</div>
-                    <button>+</button>
-                </div>
-            `;
-            this.cartElement.appendChild(div);
+                    <div class="flexbox_btn">
+                        <button class="reduce" data-id="${product.id}">-</button>
+                        <div class="displayCount">${product.quantity}</div>
+                        <button class="increase" data-id="${product.id}">+</button>
+                    </div>
+                `;
+
+                this.cartElement.appendChild(div);
+
+                // Add event listeners to the increase and reduce buttons
+                div.querySelector(".increase").addEventListener("click", () => {
+                this.increaseQuantity(product.id);
+                });
+                div.querySelector(".reduce").addEventListener("click", () => {
+                this.reduceQuantity(product.id);
+                });
+
+
+            } else {
+                // If the product is already rendered, update the quantity
+                const quantityDisplay = existingDiv.querySelector(".displayCount");
+                if (quantityDisplay) {
+                    quantityDisplay.textContent = product.quantity;
+                }
+            }
+        });
+
+        // Remove elements that are not in the cart anymore
+        this.cartElement.querySelectorAll(".productView").forEach(div => {
+            const productId = div.getAttribute("data-id");
+            const stillInCart = this.cart.find(p => p.id === productId);
+            if (!stillInCart) {
+                div.remove();
+            }
         });
     }
 }
 
-//
+// Happens when the DOM is fully loaded
 window.addEventListener('DOMContentLoaded', () => {
 
     // DOM element where products will be displayed
