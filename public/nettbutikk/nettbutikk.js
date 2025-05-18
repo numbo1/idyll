@@ -49,7 +49,21 @@ class Cart {
 
         this.cart.forEach(product => {
             const div = document.createElement("div");
-            div.innerHTML = `<strong>${product.name}</strong> - ${product.price} kr<hr>`;
+            div.className = "productView"
+            div.innerHTML = `
+                <div class="flexbox_info">
+                    <div class="cartItem_image">
+                        <img src="../bilder/testimage_online_store.webp" alt="${this.name}" class="cart_image">
+                    </div>
+                    <div class="cartItem_name">${product.name}</div> 
+                    <div class="cartItem_price">${product.price} kr</div>
+                </div>
+                <div class="flexbox_btn">
+                    <button>-</button>
+                    <div class="displayCount">1</div>
+                    <button>+</button>
+                </div>
+            `;
             this.cartElement.appendChild(div);
         });
     }

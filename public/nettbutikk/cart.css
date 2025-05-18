@@ -1,0 +1,51 @@
+/* Flexbox for bilde, navn og pris */
+.flexbox_info {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* mellomrom mellom bilde, navn og pris */
+    margin-bottom: 0.5rem;
+}
+
+/* Bildet til venstre */
+.cartItem_image img {
+    width: 6rem;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Navn */
+.cartItem_name{
+    font-size: 0.8rem;
+}
+
+/* Pris */
+.cartItem_price {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+/* Knappene under */
+.flexbox_btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.flexbox_btn button{
+    border: none;
+    font-size: 1rem;
+    width: 2rem;
+    border-radius: 100%;
+    background-color: rgb(92, 126, 112);
+    color: white;
+    padding: 0.5rem;
+}
+.flexbox_btn button:hover{
+    background-color: rgb(65, 88, 79);;
+}
+
+/* Tellervisning */
+.displayCount {
+    width: 2rem;
+    text-align: center;
+    font-weight: bold;
+}
